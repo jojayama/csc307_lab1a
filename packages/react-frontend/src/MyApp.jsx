@@ -4,6 +4,9 @@ import Table from "./Table";
 import Form from "./Form";
 
 function MyApp() {
+    function updateList(person) {
+        setCharacters([...characters, person]);
+      }
   const [characters, setCharacters] = useState([
     {
       name: "Charlie",
@@ -32,7 +35,7 @@ function MyApp() {
   return (
     <div className="container">
       <Table characterData={characters} removeCharacter={removeOneCharacter} />
-      <Form />
+      <Form handleSubmit={updateList}/>
     </div>
   );
 }
