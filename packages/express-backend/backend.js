@@ -63,7 +63,7 @@ const users = {
   });
 
   const findUserById = (id) =>
-    users["users_list"].find((user) => user["id"] === id);
+  users["users_list"].find((user) => user["id"] === id);
 
   app.get("/users/:id", (req, res) => {
     const id = req.params["id"];
@@ -85,3 +85,46 @@ const users = {
     addUser(userToAdd);
     res.send();
   });
+
+  const hardDeleteByID = (id) => {
+    users["users_list"] = users["users_list"].filter(user => user.id !== id)
+  }
+
+  app.delete("/users/:id", (req, res) => {
+    const id = req.params.id;
+    if (id == undefined) {
+      // Remove the user at the found index
+      hardDeleteByID(id);
+      res.status(200)
+    } else {
+      res.status(404).send("User not found.");
+    }
+  });
+
+  const findUsersByNameAndJob = (name, job) => {
+    return users["users_list"].filter(
+      (user) => user["name"] === name && user["job"] === job
+    );
+  };
+  
+  app.get("/users/:id/:name", (req, res) => {
+    const name = req.query.name;
+    const job = req.query.job;
+  
+    if (name && job) {
+      // Both name and job are provided
+      let result = findUsersByNameAndJob(name, job);
+      result = { users_list: result };
+      res.send(result);
+    } else if (name) {
+      // Only name is provided
+      let result = findUserByName(name);
+      result = { users_list: result };
+      res.send(result);
+    } else {
+      // Neither name nor job is provided, return all users
+      res.send(users)
+    }
+  });
+  
+  
