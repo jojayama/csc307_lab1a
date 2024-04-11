@@ -112,7 +112,7 @@ app.get("/users", (req, res) => {
   const name = req.query.name;
   const job = req.query.job;
 
-  if ((name != undefined) & (job != undefined)) {
+  if ((name != undefined) && (job != undefined)) {
     let result = findUsersByNameAndJob(name, job);
     result = { users_list: result };
     res.send(result);
