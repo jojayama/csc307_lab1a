@@ -27,23 +27,46 @@ function MyApp() {
         .catch((error) => { console.log(error); });
     }, [] );
 
-  function removeOneCharacter(index) {
-    const updated = characters.filter((character, i) => {
-      return i !== index;
-    });
-    setCharacters(updated);
-  }
+
+    function removeOneCharacter(index, id) {
+      // Send DELETE request to the backend
+      fetch(`http://localhost:8000/users/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => {
+          if (res.status === 204) {
+            // Successful delete, update frontend state
+            const updated = characters.filter((character, i) => i !== index);
+            setCharacters(updated);
+          } else if (res.status === 404) {
+            console.log("Resource not found.");
+          } else {
+            console.log("Error deleting user.");
+          }
+        })
+        .catch((error) => console.log(error));
+    }
+
+  // function removeOneCharacter(index) {
+  //   const updated = characters.filter((character, i) => {
+  //     return i !== index;
+  //   });
+  //   setCharacters(updated);
+  // }
 
   function postUser(person) {
-    const promise = fetch("Http://localhost:8000/users", {
+    return fetch("Http://localhost:8000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(person),
-    });
-
-    return promise;
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setCharacters([...characters, json]);
+      })
+      .catch((error) => console.log(error));
   }
   return (
     <div className="container">
