@@ -50,6 +50,10 @@ const users = {
   ],
 };
 
+const generateRanID = () => {
+  return Math.random().toString(36).substr(2, 6)
+}
+
 const findUserByName = (name) => {
   return users["users_list"].filter((user) => user["name"] === name);
 };
@@ -59,7 +63,7 @@ app.get("/users", (req, res) => {
   if (name != undefined) {
     let result = findUserByName(name);
     result = { users_list: result };
-    res.send(result);
+    res.status(201).send(result);
   } else {
     res.send(users);
   }
@@ -74,19 +78,21 @@ app.get("/users/:id", (req, res) => {
   if (result === undefined) {
     res.status(404).send("Resource not found.");
   } else {
-    res.send(result);
+    res.status(201).send(result);
   }
 });
 
 const addUser = (user) => {
-  users["users_list"].push(user);
-  return user;
+  const id = generateRanID();
+  const newUser = { ...user, id };
+  users["users_list"].push(newUser);
+  return newUser;
 };
 
 app.post("/users", (req, res) => {
-  const userToAdd = req.body;
-  addUser(userToAdd);
-  res.send();
+  const addedUser = req.body;
+  addUser(addedUser);
+  res.status(201).send();
 });
 
 const hardDeleteByID = (id) => {
@@ -96,11 +102,10 @@ const hardDeleteByID = (id) => {
 app.delete("/users/:id", (req, res) => {
   const id = req.params.id;
   if (id != undefined) {
-    // Remove the user at the found index
     hardDeleteByID(id);
-    res.send();
+    res.status(204).send();
   } else {
-    res.status(404).send("User not found.");
+    res.status(404).send("Resource not found.");
   }
 });
 
@@ -121,7 +126,7 @@ app.get("/users", (req, res) => {
   if ((name != undefined) && (job != undefined)) {
     let result = findUsersByNameAndJob(name, job);
     result = { users_list: result };
-    res.send(result);
+    res.status(201).send(result);
   } else {
     res.send(users);
   }

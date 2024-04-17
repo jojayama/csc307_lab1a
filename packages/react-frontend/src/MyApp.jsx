@@ -28,6 +28,7 @@ function MyApp() {
     }, [] );
 
   function removeOneCharacter(index) {
+    deleteUser(index);
     const updated = characters.filter((character, i) => {
       return i !== index;
     });
@@ -45,6 +46,14 @@ function MyApp() {
 
     return promise;
   }
+
+  function deleteUser(person){
+    const promise = fetch("http://localhost:8000/users", {
+      method: "DELETE"
+    });
+    return promise;
+  }
+
   return (
     <div className="container">
       <Table characterData={characters} removeCharacter={removeOneCharacter} />
