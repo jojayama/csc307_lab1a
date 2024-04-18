@@ -105,7 +105,7 @@ app.delete("/users/:id", (req, res) => {
     hardDeleteByID(id);
     res.status(204).send();
   } else {
-    res.status(404).send("Resource not found.");
+    res.status(404).send("Resource not found");
   }
 });
 
