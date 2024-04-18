@@ -25,14 +25,37 @@ function MyApp() {
         .then((res) => res.json())
         .then((json) => setCharacters(json["users_list"]))
         .catch((error) => { console.log(error); });
-    }, [] );
+    }, [characters] );
 
-  function removeOneCharacter(index) {
-    deleteUser(index);
-    const updated = characters.filter((character, i) => {
-      return i !== index;
-    });
-    setCharacters(updated);
+  
+    function deleteUser(id){
+      const promise = fetch(`http://localhost:8000/users/${id}`, {
+        method: "DELETE"
+      });
+      return promise;
+    }
+
+  function removeOneCharacter(id) {
+    deleteUser(id)
+    //.then & .catch
+    .then((res) => {
+      if (res.status === 204){
+        //console.log(res.status)
+        // return res.json()
+        setCharacters(characters.filter((user) => user.id != id))
+      }else{
+        console.log("Error: Could not delete user.")
+      }})
+    //   .then((deletedUser) => {
+    //   setCharacters(characters.filter((user) => user.id != deletedUser))
+    // })
+    .catch((error) => {
+      console.log(error)
+    })
+    // const updated = characters.filter((character, i) => {
+    //   return i !== id;
+    // });
+    // setCharacters(updated);
   }
 
   function postUser(person) {
@@ -43,16 +66,9 @@ function MyApp() {
       },
       body: JSON.stringify(person),
     });
-
     return promise;
   }
 
-  function deleteUser(person){
-    const promise = fetch("http://localhost:8000/users", {
-      method: "DELETE"
-    });
-    return promise;
-  }
 
   return (
     <div className="container">
