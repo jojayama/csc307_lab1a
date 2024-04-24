@@ -72,7 +72,7 @@
    * 2. Correct the odd `em` font sizing in all browsers.
    */
   pre {
-    font-family: monospace, monospace;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* 1 */
     font-size: 1em;
     /* 2 */
@@ -115,7 +115,7 @@
   code,
   kbd,
   samp {
-    font-family: monospace, monospace;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     /* 1 */
     font-size: 1em;
     /* 2 */
@@ -168,7 +168,7 @@
   optgroup,
   select,
   textarea {
-    font-family: inherit;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     /* 1 */
     font-size: 100%;
     /* 1 */
@@ -405,7 +405,7 @@
   h5 {
     margin: 1.5rem 0;
     font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     line-height: 1.2;
     color: #404040;
   }
@@ -468,12 +468,12 @@
   }
   
   a {
-    color: #0366ee;
+    color: #5b81b7;
     text-decoration: none;
   }
   
   a:hover, a:active, a:focus {
-    color: #0246a2;
+    color: #415c80;
     text-decoration: underline;
   }
   
@@ -503,13 +503,13 @@
     padding: 1rem;
     tab-size: 2;
     color: #404040;
-    font-family: Menlo, monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     margin: 0 0 1.5rem 0;
   }
   
   pre code {
-    font-family: Menlo, monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     line-height: 1.2;
   }
   
@@ -520,7 +520,7 @@
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 0 0 2px #fff inset;
     color: #333;
     display: inline-block;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 13px;
     line-height: 1.4;
     margin: 0 0.1em;
@@ -531,7 +531,7 @@
   :not(pre) > code {
     color: #404040;
     background: transparent;
-    font-family: Menlo, monospace;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
     padding: 0 0.2rem;
     border: 1px solid #dedede;
@@ -781,12 +781,12 @@
   .button, a.button, button, [type=submit], [type=reset], [type=button] {
     -webkit-appearance: none;
     display: inline-block;
-    border: 1px solid #0366ee;
+    border: 1px solid #84abff;
     border-radius: 4px;
-    background: #0366ee;
+    background: #84abff;
     color: #ffffff;
     font-weight: 600;
-    font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1rem;
     text-transform: none;
     padding: 0.75rem 1.25rem;
@@ -799,8 +799,8 @@
   }
   
   .button:hover, a.button:hover, button:hover, [type=submit]:hover, [type=reset]:hover, [type=button]:hover {
-    border: 1px solid #0250bc;
-    background: #0250bc;
+    border: 1px solid #3d69a5;
+    background: #3d69a5;
     color: #ffffff;
     text-decoration: none;
   }

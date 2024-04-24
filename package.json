@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx react-scripts start",
+    "start": "cd packages/react-frontend && npm run dev",
     "build": "npx react-scripts build",
     "eject": "npx react-scripts eject"
-
   },
   "author": "",
   "license": "ISC",
@@ -17,5 +16,8 @@
   ],
   "devDependencies": {
     "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "mongoose": "^8.3.2"
   }
 }

@@ -36,26 +36,20 @@ function MyApp() {
     }
 
   function removeOneCharacter(id) {
-    deleteUser(id)
+    // deleteUser(id)
+    fetch(`http://localhost:8000/users/${id}`, {
+      method: "DELETE"
+    })
     //.then & .catch
     .then((res) => {
       if (res.status === 204){
-        //console.log(res.status)
-        // return res.json()
-        setCharacters(characters.filter((user) => user.id != id))
+        setCharacters(characters.filter((user) => user._id !== id))
       }else{
         console.log("Error: Could not delete user.")
       }})
-    //   .then((deletedUser) => {
-    //   setCharacters(characters.filter((user) => user.id != deletedUser))
-    // })
     .catch((error) => {
       console.log(error)
     })
-    // const updated = characters.filter((character, i) => {
-    //   return i !== id;
-    // });
-    // setCharacters(updated);
   }
 
   function postUser(person) {
